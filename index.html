@@ -45,6 +45,8 @@
 
 	<script type="text/javascript" src="JS/bw.facebookcontroller.js"></script>
 	<script type="text/javascript" src="JS/bw.mapscontroller.js"></script>
+	<script type="text/javascript" src="JS/bw.mainview.js"></script>
+
 	<script type="text/javascript" src="JS/bw.mapsGame.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR6MQEKvMFKiYTS0uZZTA-YIKe2yRcfng&sensor=false"></script>
 
@@ -54,11 +56,56 @@
 	<!-- END SCRIPTS -->
     </head>
     <body>
+	<div id="fb-root"></div>
+	<script>
+	    window.fbAsyncInit = function() {
+		// init the FB JS SDK
+		FB.init({
+		    appId      : '426080854175488',               // App ID from the app dashboard
+		    channelUrl : '//local.meme42.fr/channel.html', // Channel file for x-domain comms
+		    status     : true,                            // Check Facebook Login status
+		    xfbml      : true                             // Look for social plugins on the page
+		});
+	    };
+
+	    // Load the SDK asynchronously
+	    (function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	    }(document, 'script', 'facebook-jssdk'));
+	</script>
 	<div id="global">
 	    <header>
+                WELCOME TO BORNWORM !
 	    </header>
 
 	    <div id="layout">
+		<div id="explanation">
+                    <p>
+                        Le but du jeu est simple. Trouvez le lieu de naissance de vos amis. <br />
+                        Cliquez sur la carte pour valider votre choix.<br />
+                        Vous n'avez qu'un seul indice : le lieu de résidence actuel de votre ami.
+                    </p>
+                    <br />
+		    <p class="questionStart">Avec combien d'amis voulez-vous jouer ?</p>
+		    <input type="radio" name="nbFriends" class="nbFriends" value="5" />5
+		    <input type="radio" name="nbFriends" class="nbFriends" value="10" />10
+		    <input type="radio" name="nbFriends" class="nbFriends" value="15" />15
+		</div>
+		<div id="friend">
+		    <p>Ami à trouver : <br /><span id="friendName"></span></p>
+		</div>
+		<div id="result">
+		    <p>Vous êtes à <span id="distance"></span>km !</p>
+		    <input type="button" value="Ami suivant" id="nextFriend"/>
+		</div>
+                <div id="gameOver">
+                    <p>Merci d'avoir joué !</p>
+                </div>
+		
 		<div id="map-canvas">
 		</div>
 		<div id="position" data-lat="" data-lng="" data-alt=""></div>
