@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+	<title>BornWorm - Devinnez où habitent vos amis !</title>
+
+	<!-- META -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+	<meta name="Description" content="Devinnez où habitent vos amis avec BornWorm !" >
+	<meta name="Author" content="Dulon Thibault, Nitoumbi Ludovic">
+
+	<meta name="Revisit-after" content="15 days">
+	<meta name="Publisher" content="Dulon Thibault, Nitoumbi Ludovic">
+	<meta name="Robots" content="index, follow, all">
+	<meta name="Rating" content="general">
+	<meta name="Language" content="fr">
+	<meta name="Viewport" content="initial-scale=1.0">
+
+	<meta property="og:title" content="BornWorm - Devinnez où habitent vos amis !" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://bornworm.passanger.fr" />
+	<meta property="og:image" content="favicon.ico" />
+	<meta property="og:description" content="Devinnez où habitent vos amis avec BornWorm !" />
+	<!-- END META -->
+
+	<!-- ICONS -->
+	<link rel="icon" type="images/png" href="favicon.ico" />
+	<!--[if IE]>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<![endif]-->
+	<link rel="apple-touch-icon" href="../favicon57.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="favicon72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="favicon114.png" />
+	<!-- END ICONS -->
+
+	<!-- CSS -->
+	<link type="text/css" rel="stylesheet" href="CSS/Base/reset.css" />
+	<link type="text/css" rel="stylesheet" href="CSS/bw.mapsGame.css" />
+	<!-- END CSS -->
+
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="JS/Base/jquery-1.10.min.js"></script>
+	<script type="text/javascript" src="JS/Base/jquery-ui-1.10.custom.min.js"></script>
+	<script type="text/javascript" src="JS/Base/bw.helper.js"></script>
+
+	<script type="text/javascript" src="JS/bw.facebookcontroller.js"></script>
+	<script type="text/javascript" src="JS/bw.mapscontroller.js"></script>
+	<script type="text/javascript" src="JS/bw.mainview.js"></script>
+
+	<script type="text/javascript" src="JS/bw.mapsGame.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR6MQEKvMFKiYTS0uZZTA-YIKe2yRcfng&sensor=false"></script>
+
+	<!--[if lt IE 9]>
+		<script src="JS/Base/html5shiv.js"></script>
+	<![endif]-->
+	<!-- END SCRIPTS -->
+    </head>
+    <body>
+	<div id="fb-root"></div>
+	<script>
+	    window.fbAsyncInit = function() {
+		// init the FB JS SDK
+		FB.init({
+		    appId      : '426080854175488',               // App ID from the app dashboard
+		    channelUrl : '//local.meme42.fr/channel.html', // Channel file for x-domain comms
+		    status     : true,                            // Check Facebook Login status
+		    xfbml      : true                             // Look for social plugins on the page
+		});
+	    };
+
+	    // Load the SDK asynchronously
+	    (function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	    }(document, 'script', 'facebook-jssdk'));
+	</script>
+	<div id="global">
+	    <header>
+                WELCOME TO BORNWORM !
+	    </header>
+
+	    <div id="layout">
+		<div id="explanation">
+                    <p>
+                        Le but du jeu est simple. Trouvez le lieu de naissance de vos amis. <br />
+                        Cliquez sur la carte pour valider votre choix.<br />
+                        Vous n'avez qu'un seul indice : le lieu de résidence actuel de votre ami.
+                    </p>
+                    <br />
+		    <p class="questionStart">Avec combien d'amis voulez-vous jouer ?</p>
+		    <input type="radio" name="nbFriends" class="nbFriends" value="5" />5
+		    <input type="radio" name="nbFriends" class="nbFriends" value="10" />10
+		    <input type="radio" name="nbFriends" class="nbFriends" value="15" />15
+		</div>
+		<div id="friend">
+		    <p>Ami à trouver : <br /><span id="friendName"></span></p>
+		</div>
+		<div id="result">
+		    <p>Vous êtes à <span id="distance"></span>km !</p>
+		    <input type="button" value="Ami suivant" id="nextFriend"/>
+		</div>
+                <div id="gameOver">
+                    <p>Merci d'avoir joué !</p>
+                </div>
+		
+		<div id="map-canvas">
+		</div>
+		<div id="position" data-lat="" data-lng="" data-alt=""></div>
+	    </div>
+
+	    <footer>
+	    </footer>
+	</div>
+    </body>
+</html>

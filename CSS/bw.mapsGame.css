@@ -1,0 +1,48 @@
+#global{
+	width: 1024px;
+	height: auto;
+	margin: auto;
+}
+header{
+	background: black;
+	border-bottom: 1px solid #444;
+	height: 50px;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 26px;
+        font-family: monospace;
+        padding-top: 20px;
+}
+#layout{
+	min-height: 600px;
+}
+#explanation, #result, #friend,#gameOver{
+    display: none;
+}
+#explanation{
+    width: 500px;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+    font-size: 19px;
+    padding-top: 100px;
+}
+
+#explanation .questionStart{
+    font-weight: bold;
+}
+
+#friend span#friendName{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#friend, #result, #gameOver{
+    width: 500px;
+    margin: 5px auto;
+    text-align: center;
+}
+
+#result{
+    color: green;
+}
